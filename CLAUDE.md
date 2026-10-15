@@ -6,7 +6,8 @@ SSH and static IPs, so they behave like VMs. See [README.md](README.md) for usag
 
 ## Layout
 
-- `compose.yml`, `acs/`, `node/`: the lab.
+- `compose.yml`, `acs/`, `node/`: the lab; `common/` holds the shared image
+  setup.
 - `exercises/NN-name/`: full Ansible setup in its starting state plus
   `README.md` (Goal, Concepts, Start, Assignment, Expected result, Check).
 - `solutions/NN-name/`: the same directory after the assignment is done

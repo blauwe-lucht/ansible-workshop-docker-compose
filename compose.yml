@@ -7,7 +7,10 @@ x-systemd: &systemd
 
 x-node: &node
   <<: *systemd
-  build: ./node
+  build:
+    context: ./node
+    additional_contexts:
+      common: ./common
   volumes:
     - ssh-keys:/keys:ro
     - &cgroup /sys/fs/cgroup:/sys/fs/cgroup:rw
@@ -18,7 +21,10 @@ x-node: &node
 services:
   acs:
     <<: *systemd
-    build: ./acs
+    build:
+      context: ./acs
+      additional_contexts:
+        common: ./common
     hostname: acs
     working_dir: /home/ansible
     ports:

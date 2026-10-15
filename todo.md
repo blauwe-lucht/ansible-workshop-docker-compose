@@ -4,8 +4,6 @@
 - [ ] Decide on the Python interpreter discovery warning (set
   `interpreter_python` in `ansible.cfg` or explain it).
 - [ ] Plan the list of exercises and their concepts.
-- [ ] Add passwordless sudo for `ansible` on the nodes when an exercise
-  introduces `become`.
 - [ ] Smoke test on one student laptop (Rancher Desktop, Windows):
   - `docker compose up -d --build`
   - ping from acs in `solutions/01-ping`

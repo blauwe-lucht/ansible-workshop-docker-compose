@@ -6,6 +6,12 @@
 - **All machines run systemd** (`9-ubi-init` image) so they behave like VMs
   and can run services. systemd needs a writable cgroup tree: `cgroup: host`
   plus a read-write `/sys/fs/cgroup` mount, which is less than `privileged`.
+- **Images set up like a regular Rocky install** via `common/setup.sh`: the
+  `ubi-init` image is minimized (no docs, `coreutils-single`, few tools).
+  Students get man pages, tab completion, the usual tools and RHEL's
+  `ll`/`l.` aliases, plus Ubuntu-style `l` and `la` from `common/aliases.sh`.
+- **`ansible` is in `wheel`** and needs its password for `sudo`, like a regular
+  VM user.
 - **Static IPs** on subnet `172.30.0.0/24` so machines have fixed addresses like
   VMs. Other subnets may clash with existing Docker networks or VPNs.
 - **SSH login from the host** as `ansible`/`ansible` on `127.0.0.1:2220`
