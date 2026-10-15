@@ -9,16 +9,20 @@ SSH and static IPs, so they behave like VMs. See [README.md](README.md) for usag
 - `compose.yml`, `acs/`, `node/`: the lab; `common/` holds the shared image
   setup.
 - `exercises/NN-name/`: full Ansible setup in its starting state plus
-  `README.md` (Goal, Concepts, Start, Assignment, Expected result, Check).
+  `README.md` (Goal, Concepts, Start, Assignment, Expected result).
+  The entry point is always `playbook.yml`, run with
+  `ansible-playbook playbook.yml`.
 - `solutions/NN-name/`: the same directory after the assignment is done
   (no README).
 
 ## Exercise rules
 
 - One small change per exercise; related concepts may be combined.
+- Never refer to the solution; state the goal, not the exact change.
 - Only use concepts introduced in the same or an earlier exercise.
-- Add each exercise to the table in README.md.
-- Markdown passes markdownlint with default rules.
+- Add each exercise to the list in README.md.
+- Markdown passes markdownlint and playbooks pass `ansible-lint`, with
+  default rules.
 
 ## Status
 

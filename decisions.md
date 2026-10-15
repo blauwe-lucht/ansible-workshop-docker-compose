@@ -30,8 +30,9 @@
   keys on rebuild, and exercise `ansible.cfg` files stay free of SSH settings.
 - **User `ansible` with UID 1000** on all containers: matches the host user, so
   students can edit the bind-mounted exercises with their own editor.
-- **`solutions/` mounted read-only** in `acs`: students can compare but not
-  change solutions.
+- **Exercises don't point to solutions**, and `solutions/` is not mounted in
+  `acs`: students try first instead of looking up the answer. Assignments
+  state the goal, not the exact change.
 - **Students use Rancher Desktop on Windows** with the dockerd (moby) engine:
   it provides `docker compose`.
 - **`ANSIBLE_CONFIG=.` on acs**: Windows bind mounts look world-writable, and
@@ -39,9 +40,16 @@
   `ANSIBLE_CONFIG` bypasses that check, so students can clone on Windows.
 - **LF line endings via `.gitattributes`**: Git for Windows checks out CRLF by
   default, which breaks the shell scripts in the containers.
+- **Explicit `interpreter_python = /usr/bin/python3`** in exercise
+  `ansible.cfg` files, introduced in exercise 01: it removes the discovery
+  warning and keeps the interpreter fixed, unlike `auto_silent`, which only
+  hides the warning.
 - **Exercise instructions in English**, matching Ansible docs and module names.
 - **Exercise structure**: each exercise starts from a working setup and asks
   one small change. The solution is the full exercise directory after that
-  change. An exercise only uses concepts from itself and earlier exercises.
-- **Markdown follows markdownlint default rules**, including 80-character
-  lines; warnings are fixed, not suppressed.
+  change. Every exercise has `playbook.yml` as its entry point, so students
+  always know what to run. An exercise only uses concepts from itself and
+  earlier exercises.
+- **Markdown follows markdownlint and playbooks follow `ansible-lint` default
+  rules**, including 80-character Markdown lines; warnings are fixed, not
+  suppressed.

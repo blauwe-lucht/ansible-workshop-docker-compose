@@ -32,7 +32,6 @@ services:
     volumes:
       - ssh-keys:/home/ansible/.ssh
       - ./exercises:/home/ansible/exercises
-      - ./solutions:/home/ansible/solutions:ro
       - *cgroup
     healthcheck:
       test: ["CMD", "test", "-f", "/home/ansible/.ssh/id_ed25519.pub"]

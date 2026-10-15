@@ -20,8 +20,8 @@ ssh -p 2221 ansible@localhost   # node1
 ssh -p 2222 ansible@localhost   # node2
 ```
 
-On `acs`, exercises are in `~/exercises` and solutions in `~/solutions`
-(read-only). Edit the files on your own machine or inside `acs`.
+On `acs`, the exercises are in `~/exercises`. Edit the files on your own
+machine or inside `acs`.
 
 | Host  | IP          |
 |-------|-------------|
@@ -41,11 +41,30 @@ e.g. `ssh ansible@172.30.0.11`.
 
 ## Exercises
 
-| #  | Exercise               | Concepts                                     |
-|----|------------------------|----------------------------------------------|
-| 01 | [Ping your hosts][ex1] | nodes, `ansible.cfg`, inventory, ad-hoc ping |
+1. [Ping your hosts][ex1]: control and managed nodes, inventory,
+   `ansible.cfg`, playbook, ping, Python interpreter.
 
 [ex1]: exercises/01-ping/README.md
+
+## Reset the nodes
+
+Recreate the nodes to undo everything Ansible or you changed on them:
+
+```bash
+docker compose up -d --force-recreate node1 node2   # both nodes
+docker compose up -d --force-recreate node1         # one node
+```
+
+`acs`, the exercises and the SSH key stay as they are.
+
+The nodes get new host keys, so `ssh` from your own machine warns that the host
+key changed. Remove the old key and log in again:
+
+```bash
+ssh-keygen -R "[localhost]:2221"   # node1 via port
+ssh-keygen -R 172.30.0.11          # node1 via IP
+ssh-keygen -R "[127.0.0.1]:2221"   # node1 on Windows
+```
 
 ## Stop the lab
 
