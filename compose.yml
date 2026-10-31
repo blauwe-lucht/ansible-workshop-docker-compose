@@ -9,6 +9,9 @@ x-node: &node
   <<: *systemd
   build:
     context: ./node
+    # Provenance attestations give every build a new image ID, even when
+    # fully cached, so `up --build` would recreate every container.
+    provenance: false
     additional_contexts:
       common: ./common
   volumes:
@@ -23,6 +26,7 @@ services:
     <<: *systemd
     build:
       context: ./acs
+      provenance: false
       additional_contexts:
         common: ./common
     hostname: acs

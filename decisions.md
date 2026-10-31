@@ -49,6 +49,10 @@
   `ansible.cfg` files, introduced in exercise 01: it removes the discovery
   warning and keeps the interpreter fixed, unlike `auto_silent`, which only
   hides the warning.
+- **Builds without provenance attestations** (`provenance: false`): they give
+  every build a new image ID, so `docker compose up -d --build` would recreate
+  all containers after any change. The images stay local, where nobody
+  verifies provenance.
 - **Exercise instructions in English**, matching Ansible docs and module names.
 - **Exercise structure**: each exercise starts from a working setup and asks
   one small change. The solution is the full exercise directory after that
