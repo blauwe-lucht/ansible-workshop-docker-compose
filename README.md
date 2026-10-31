@@ -35,9 +35,7 @@ e.g. `ssh ansible@172.30.0.11`.
 ## Windows (Rancher Desktop)
 
 - Select the **dockerd (moby)** container engine in Rancher Desktop.
-- Clone the repo anywhere, e.g. on `C:\`.
-- Log in with `127.0.0.1` instead of `localhost`,
-  e.g. `ssh -p 2220 ansible@127.0.0.1`.
+- Clone the repo anywhere, e.g. on `C:\git`.
 
 ## Exercises
 
